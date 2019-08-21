@@ -22,7 +22,12 @@ import Moment from 'react-moment'
     
                 <div className="pet-info media-body">
                     <div className="pet-head d-flex">
-                    <span className="pet-name">{item.petName}</span>
+                    <span className="pet-name" contentEditable suppressContentEditableWarning 
+                        onBlur={
+                            e=> this.props.updateInfo('petName', e.target.innerText,item.aptsId)
+                        }
+                    >
+                    {item.petName}</span>
                     &nbsp;
                     <span className="apt-date ml-auto">
                     <Moment 
@@ -35,7 +40,11 @@ import Moment from 'react-moment'
   
                     <div className="owner-name">
                         <span className="label-item">Owner: </span>
-                        <span>{item.ownerName}</span>
+                        <span className="pet-name" contentEditable suppressContentEditableWarning 
+                        onBlur={
+                            e=> this.props.updateInfo('ownerName', e.target.innerText,item.aptsId)
+                        }
+                    > {item.ownerName}</span>
                     </div>
                     <div className="apt-notes">{item.aptNotes}</div>
                     </div>

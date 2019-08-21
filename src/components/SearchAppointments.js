@@ -13,6 +13,7 @@ import '../css/App.css'
                   type="text"
                   className="form-control"
                   aria-label="Search Appointments"
+                  onChange={this.props.handleChange}
                 />
                 <div className="input-group-append">
                   <button
@@ -26,20 +27,50 @@ import '../css/App.css'
                   </button>
     
                   <div className="sort-menu dropdown-menu dropdown-menu-right">
-                    <button className="sort-by dropdown-item" href="#">
+                    <button 
+                      className={'sort-by dropdown-item ' +
+                        (this.props.orderBy === 'petName' ? 'active' : '')
+
+                      }
+                      onClick = {e=> this.props.changeOrder('petName', this.props.orderDir)} 
+                      href="#">
                       Pet Name
                     </button>
-                    <button className="sort-by dropdown-item" href="#">
+                    <button className={'sort-by dropdown-item ' +
+                    (this.props.orderBy === 'aptDate' ? 'active' : '')
+
+                  } href="#"
+                  onClick = {e=> this.props.changeOrder('aptDate', this.props.orderDir)} 
+
+                  >
                       Date
                     </button>
-                    <button className="sort-by dropdown-item" href="#">
+                    <button className={'sort-by dropdown-item ' +
+                    (this.props.orderBy === 'ownerName' ? 'active' : '')
+
+                  } href="#"
+                  onClick = {e=> this.props.changeOrder('ownerName', this.props.orderDir)} 
+
+                  >
                       Owner
                     </button>
                     <div role="separator" className="dropdown-divider" />
-                    <button className="sort-by dropdown-item" href="#">
+                    <button className={'sort-by dropdown-item ' +
+                    (this.props.orderDir === 'asc' ? 'active' : '')
+
+                  } href="#"
+                  onClick = {e=> this.props.changeOrder(this.props.orderBy, this.props.orderDir)} 
+
+                  >
                       Asc
                     </button>
-                    <button className="sort-by dropdown-item" href="#">
+                    <button className={'sort-by dropdown-item ' +
+                    (this.props.orderDir === 'desc' ? 'active' : '')
+
+                  } href="#"
+                  onClick = {e=> this.props.changeOrder(this.props.orderBy, this.props.orderDir)} 
+
+                  >
                       Desc
                     </button>
                   </div>
